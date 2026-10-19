@@ -278,7 +278,7 @@ export const ScratchCardSection: React.FC = () => {
                     <div className="w-12 h-[1px] bg-[#C5A059]/50" />
 
                     <p className="font-calligraphy text-lg sm:text-3xl text-[#C5A059]">
-                      {weddingData.couple.groomShort} &amp; {weddingData.couple.brideShort}
+                      {weddingData.couple.brideShort} &amp; {weddingData.couple.groomShort}
                     </p>
                   </motion.div>
                 )}

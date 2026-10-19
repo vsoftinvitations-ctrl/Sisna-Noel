@@ -73,7 +73,7 @@ export const HeroSection: React.FC = () => {
               </p>
               
               <h1 className="font-italiana text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-relaxed mb-1 tracking-wide">
-                {weddingData.couple.groom}
+                {weddingData.couple.bride}
               </h1>
               
               <p className="font-italiana text-4xl sm:text-5xl text-[#C5A059] my-1 lg:ml-6">
@@ -81,7 +81,7 @@ export const HeroSection: React.FC = () => {
               </p>
               
               <h1 className="font-italiana text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-relaxed mt-1 tracking-wide">
-                {weddingData.couple.bride}
+                {weddingData.couple.groom}
               </h1>
             </motion.div>
           </div>

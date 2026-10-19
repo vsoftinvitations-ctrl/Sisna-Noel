@@ -105,13 +105,13 @@ export const GatefoldOpening: React.FC<GatefoldOpeningProps> = ({
 
         {/* Couple Name in Parisienne Script */}
         <h2 className="font-parisienne text-4xl sm:text-5xl text-[#2C221E] font-bold leading-tight" style={{textShadow:'0 2px 10px rgba(255,255,255,0.85)'}}>
-          Noel
+          Sisna
         </h2>
         <p className="font-calligraphy text-2xl sm:text-3xl text-[#2C221E] my-0.5" style={{textShadow:'0 1px 8px rgba(255,255,255,0.85)'}}>
           &amp;
         </p>
         <h2 className="font-parisienne text-4xl sm:text-5xl text-[#2C221E] font-bold leading-tight" style={{textShadow:'0 2px 10px rgba(255,255,255,0.85)'}}>
-          Sisna
+          Noel
         </h2>
 
         {/* Divider */}

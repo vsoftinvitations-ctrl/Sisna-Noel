@@ -38,13 +38,13 @@ export const InvitationCardReveal: React.FC = () => {
         {/* Couple Names */}
         <div className="my-8">
           <h1 className="font-calligraphy text-4xl sm:text-6xl text-[#3A2E2B] font-normal tracking-wide leading-relaxed mb-1">
-            {weddingData.couple.groom}
+            {weddingData.couple.bride}
           </h1>
           <p className="font-calligraphy text-3xl sm:text-5xl text-[#C5A059] my-1">
             &amp;
           </p>
           <h1 className="font-calligraphy text-4xl sm:text-6xl text-[#3A2E2B] font-normal tracking-wide leading-relaxed mt-1">
-            {weddingData.couple.bride}
+            {weddingData.couple.groom}
           </h1>
         </div>
 

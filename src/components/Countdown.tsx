@@ -102,7 +102,7 @@ export const Countdown: React.FC = () => {
             </p>
 
             <h3 className="font-italiana text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-tight mb-4" style={{textShadow:'0 2px 14px rgba(255,255,255,0.9)'}}>
-              {weddingData.couple.groomShort} &amp; {weddingData.couple.brideShort} are Married
+              {weddingData.couple.brideShort} &amp; {weddingData.couple.groomShort} are Married
             </h3>
 
             <div className="w-12 h-[1px] bg-[#C5A059]/60 mx-auto my-4" />

@@ -73,7 +73,7 @@ export const weddingData: WeddingData = {
     date: "30 December 2026",
     rawDate: "2026-12-30T11:00:00+05:30",
     time: "11:00 AM",
-    venue: "Holy Family Syro Malabar Forane Church",
+    venue: "Holy Family Forane Church",
     location: "Ponkunnam, Kottayam, Kerala",
     city: "Ponkunnam, Kottayam",
     state: "Kerala",
@@ -113,7 +113,7 @@ export const weddingData: WeddingData = {
     {
       time: "11:00 AM",
       title: "The Holy Matrimony Ceremony",
-      venue: "Holy Family Syro Malabar Forane Church, Ponkunnam",
+      venue: "Holy Family Forane Church, Ponkunnam",
       description: "Sacred Syro-Malabar Christian nuptial ceremony and solemn marriage blessings.",
     },
     {

@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
         </p>
 
         <h2 className="font-serif text-2xl sm:text-3xl text-[#3A2E2B] font-semibold tracking-wide uppercase">
-          {weddingData.couple.groom} &amp; {weddingData.couple.bride}
+          {weddingData.couple.bride} &amp; {weddingData.couple.groom}
         </h2>
 
         <p className="font-serif text-sm tracking-widest text-[#3A2E2B] font-medium">
