@@ -13,7 +13,6 @@ import { WeddingTimeline } from "./components/WeddingTimeline";
 import { Countdown } from "./components/Countdown";
 import { Gallery } from "./components/Gallery";
 import { Footer } from "./components/Footer";
-import { RSVPSection } from "./components/RSVPSection";
 import { AmbientParticles } from "./components/AmbientParticles";
 import { ChevronDown } from "lucide-react";
 
@@ -92,9 +91,6 @@ export const App: React.FC = () => {
 
             {/* Luxury Photo Gallery with Lightbox */}
             <Gallery />
-
-            {/* WhatsApp RSVP Confirmation */}
-            <RSVPSection />
           </main>
 
           <Footer />

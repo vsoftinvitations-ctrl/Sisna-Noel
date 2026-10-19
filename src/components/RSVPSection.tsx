@@ -5,7 +5,7 @@ import { weddingData } from "../data/weddingData";
 export const RSVPSection: React.FC = () => {
   const whatsappNumber = "919994195316";
   const message = encodeURIComponent(
-    `Hi! I confirm my presence for ${weddingData.couple.brideShort} & ${weddingData.couple.groomShort}'s wedding on 30 Dec 2026 ✅`
+    `Hi! I confirm my presence for ${weddingData.couple.brideShort} & ${weddingData.couple.groomShort}'s wedding on 30 Dec 2026`
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
