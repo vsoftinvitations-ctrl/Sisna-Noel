@@ -59,7 +59,7 @@ export const OurStory: React.FC = () => {
         >
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3A2E2B] font-semibold tracking-wide uppercase">
-            OUR STORY
+            OUR MOMENTS
           </h2>
           <p className="font-serif italic text-sm sm:text-base text-[#5C534E] mt-2">
             Moments captured along our path to forever
