@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
           {weddingData.wedding.date.toUpperCase()}
         </p>
 
-        <p className="font-script text-xl sm:text-2xl text-[#C5A059] pt-2">
+        <p className="font-parisienne text-2xl sm:text-3xl text-[#3A2E2B] pt-2">
           “Two hearts, one journey, blessed by God.”
         </p>
 

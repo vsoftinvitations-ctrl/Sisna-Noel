@@ -13,8 +13,20 @@ export const InvitationCardReveal: React.FC = () => {
         className="relative w-full max-w-2xl bg-[#FDFBF7] border border-[#C5A059]/40 p-8 sm:p-14 rounded-2xl sm:rounded-3xl shadow-xl text-center paper-card overflow-hidden"
       >
         {/* Fine Inner Double Gold Border */}
-        <div className="absolute inset-3 border border-[#C5A059]/30 rounded-xl pointer-events-none" />
-        <div className="absolute inset-5 border border-[#C5A059]/15 rounded-lg pointer-events-none" />
+        <div className="absolute inset-3 border border-[#C5A059]/30 rounded-xl pointer-events-none z-10" />
+        <div className="absolute inset-5 border border-[#C5A059]/15 rounded-lg pointer-events-none z-10" />
+
+        {/* Ambient Bride Photo — soft background for romance */}
+        <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden pointer-events-none">
+          <img
+            src="/images/bride.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover object-[center_20%] opacity-[0.13]"
+          />
+          {/* Warm cream overlay so text stays crisp */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBF7]/60 via-[#FDFBF7]/40 to-[#FDFBF7]/70" />
+        </div>
 
         {/* Top Subtitle */}
         <div className="flex flex-col items-center justify-center mb-6">
@@ -48,7 +60,7 @@ export const InvitationCardReveal: React.FC = () => {
           <div className="w-12 sm:w-16 h-[1px] bg-[#C5A059]/40" />
           <div className="w-10 h-10 sm:w-12 sm:h-12 drop-shadow-md shrink-0">
             <img
-              src="/images/wax_seal.png?v=2"
+              src="/images/wax_seal.png?v=3"
               alt={`${weddingData.couple.bride} & ${weddingData.couple.groom} Wax Seal`}
               className="w-full h-full object-contain"
             />

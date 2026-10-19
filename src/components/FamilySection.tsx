@@ -42,6 +42,14 @@ export const FamilySection: React.FC = () => {
             <h3 className="font-serif text-2xl sm:text-3xl text-[#3A2E2B] font-medium leading-snug">
               {weddingData.family.groomMother}
             </h3>
+            {weddingData.family.groomSiblings.length > 0 && (
+              <div className="mt-5 pt-4 border-t border-[#C5A059]/20">
+                <p className="text-[10px] tracking-[0.2em] text-[#C5A059] font-medium uppercase mb-2">Siblings</p>
+                <p className="font-serif text-base text-[#5C534E] italic leading-relaxed">
+                  {weddingData.family.groomSiblings.join(" & ")}
+                </p>
+              </div>
+            )}
           </motion.div>
 
           {/* Bride Parents Card */}
@@ -62,6 +70,14 @@ export const FamilySection: React.FC = () => {
             <h3 className="font-serif text-2xl sm:text-3xl text-[#3A2E2B] font-medium leading-snug">
               {weddingData.family.brideMother}
             </h3>
+            {weddingData.family.brideSiblings.length > 0 && (
+              <div className="mt-5 pt-4 border-t border-[#C5A059]/20">
+                <p className="text-[10px] tracking-[0.2em] text-[#C5A059] font-medium uppercase mb-2">Siblings</p>
+                <p className="font-serif text-base text-[#5C534E] italic leading-relaxed">
+                  {weddingData.family.brideSiblings.join(" & ")}
+                </p>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

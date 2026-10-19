@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ZoomIn, X, Heart } from "lucide-react";
+import { ZoomIn, X } from "lucide-react";
 import { weddingData } from "../data/weddingData";
 
 interface StoryMoment {
@@ -16,7 +16,7 @@ interface StoryMoment {
 const STORY_MOMENTS: StoryMoment[] = [
   {
     id: 1,
-    image: "/images/og-image.jpg",
+    image: "/images/chapter 1.png",
     tag: "Chapter 01",
     title: "The First Glance",
     position: "object-[center_60%]",
@@ -25,19 +25,19 @@ const STORY_MOMENTS: StoryMoment[] = [
   },
   {
     id: 2,
-    image: "/images/couple.png",
+    image: "/images/chapter 2.png",
     tag: "Chapter 02",
     title: "Walking in Grace",
-    position: "object-[center_35%]",
+    position: "object-center",
     offsetClass: "sm:translate-y-8",
     rotationClass: "rotate-2 hover:rotate-0",
   },
   {
     id: 3,
-    image: "/images/preview.png",
+    image: "/images/chapter 3.png",
     tag: "Chapter 03",
     title: "Forever & Always",
-    position: "object-center",
+    position: "object-[center_35%]",
     offsetClass: "sm:-translate-y-4",
     rotationClass: "-rotate-2 hover:rotate-0",
   },
@@ -57,10 +57,6 @@ export const OurStory: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#C5A059] text-xs uppercase tracking-widest font-semibold mb-3">
-            <Heart className="w-3.5 h-3.5" />
-            <span>Visual Journey</span>
-          </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3A2E2B] font-semibold tracking-wide uppercase">
             OUR STORY
@@ -113,9 +109,6 @@ export const OurStory: React.FC = () => {
                   <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-[0.25em] text-[#C5A059] block">
                     {item.tag}
                   </span>
-                  <h3 className="font-serif text-base sm:text-lg font-medium text-[#3A2E2B] mt-0.5">
-                    {item.title}
-                  </h3>
                 </div>
               </div>
             </motion.div>
@@ -158,9 +151,6 @@ export const OurStory: React.FC = () => {
               <p className="text-xs uppercase tracking-widest text-[#C5A059] font-medium">
                 {selectedImage.tag} • {weddingData.couple.groomShort} &amp; {weddingData.couple.brideShort}
               </p>
-              <h4 className="font-serif text-2xl text-[#3A2E2B] font-semibold mt-1">
-                {selectedImage.title}
-              </h4>
             </motion.div>
           </motion.div>
         )}

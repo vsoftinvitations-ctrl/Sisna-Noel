@@ -10,6 +10,11 @@
     --font-sans: 'Inter', system-ui, sans-serif;
     --font-script: 'Great Vibes', cursive;
     --font-calligraphy: 'Alex Brush', 'Pinyon Script', 'Great Vibes', cursive;
+    --font-italiana: 'Italiana', serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-parisienne: 'Parisienne', cursive;
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-montserrat: 'Montserrat', sans-serif;
   }
 
   html,
@@ -41,6 +46,26 @@
 
   .font-calligraphy {
     font-family: var(--font-calligraphy);
+  }
+
+  .font-italiana {
+    font-family: var(--font-italiana);
+  }
+
+  .font-cinzel {
+    font-family: var(--font-cinzel);
+  }
+
+  .font-parisienne {
+    font-family: var(--font-parisienne);
+  }
+
+  .font-playfair {
+    font-family: var(--font-playfair);
+  }
+
+  .font-montserrat {
+    font-family: var(--font-montserrat);
   }
 }
 

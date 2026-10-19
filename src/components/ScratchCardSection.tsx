@@ -1,49 +1,15 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { Sparkles, Eye, Heart, Utensils } from "lucide-react";
+import { Eye } from "lucide-react";
 import { weddingData } from "../data/weddingData";
 
-type TabId = "note" | "vow" | "feast";
-
-interface ScratchCardOption {
-  id: TabId;
-  label: string;
-  icon: React.ReactNode;
-  title: string;
-  badge: string;
-}
-
-const SCRATCH_OPTIONS: ScratchCardOption[] = [
-  {
-    id: "note",
-    label: "Love Note",
-    icon: <Heart className="w-3.5 h-3.5" />,
-    title: `A Personal Note from ${weddingData.couple.bride} & ${weddingData.couple.groom}`,
-    badge: "Personal Blessing",
-  },
-  {
-    id: "vow",
-    label: "Sacred Covenant",
-    icon: <Sparkles className="w-3.5 h-3.5" />,
-    title: "A Sacred Covenant in Christ",
-    badge: "Holy Blessing",
-  },
-  {
-    id: "feast",
-    label: "Feast Highlights",
-    icon: <Utensils className="w-3.5 h-3.5" />,
-    title: "Celebration Feast & Memories",
-    badge: "Tradition & Joy",
-  },
-];
+type TabId = "note";
 
 export const ScratchCardSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<TabId>("note");
+  const activeTab: TabId = "note";
   const [revealedCards, setRevealedCards] = useState<Record<TabId, boolean>>({
     note: false,
-    vow: false,
-    feast: false,
   });
   const [isScratching, setIsScratching] = useState(false);
 
@@ -112,7 +78,7 @@ export const ScratchCardSection: React.FC = () => {
     ctx.textBaseline = "middle";
     ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
     ctx.shadowBlur = 4;
-    ctx.fillText("A & J", centerX, centerY - 24);
+    ctx.fillText(weddingData.couple.initials, centerX, centerY - 24);
 
     // Call to action
     ctx.shadowBlur = 2;
@@ -267,10 +233,6 @@ export const ScratchCardSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#C5A059] text-xs uppercase tracking-widest font-semibold mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Interactive Reveal</span>
-          </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3A2E2B] font-semibold tracking-wide">
             SCRATCH TO REVEAL
@@ -281,36 +243,16 @@ export const ScratchCardSection: React.FC = () => {
           <div className="w-16 h-[1px] bg-[#C5A059] mx-auto mt-4" />
         </motion.div>
 
-        {/* Tab Selection */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8 flex-wrap">
-          {SCRATCH_OPTIONS.map((opt) => {
-            const isActive = activeTab === opt.id;
-            return (
-              <button
-                key={opt.id}
-                onClick={() => setActiveTab(opt.id)}
-                aria-label={opt.title}
-                title={opt.badge}
-                className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 cursor-pointer ${isActive
-                  ? "bg-[#C5A059] text-white shadow-md scale-110 border border-[#B89745]"
-                  : "bg-[#FDFBF7] text-[#5C534E] border border-[#C5A059]/30 hover:bg-[#FAF5EE] hover:text-[#3A2E2B]"
-                  }`}
-              >
-                {opt.icon}
-              </button>
-            );
-          })}
-        </div>
 
         {/* Scratch Card Frame */}
         <div className="relative paper-card rounded-2xl sm:rounded-3xl border border-[#C5A059]/40 shadow-2xl p-4 sm:p-8 bg-[#FDFBF7]">
           {/* Card Canvas Container */}
           <div
             ref={containerRef}
-            className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-[#C5A059]/30 shadow-inner select-none bg-[#FDFBF7]"
+            className="relative w-full min-h-[260px] sm:min-h-[320px] rounded-xl sm:rounded-2xl overflow-hidden border border-[#C5A059]/30 shadow-inner select-none bg-[#FDFBF7]"
           >
             {/* UNDERLYING SECRET CONTENT (Visible as user scratches) */}
-            <div className="absolute inset-0 p-6 sm:p-10 flex flex-col justify-between items-center text-center overflow-y-auto">
+            <div className="absolute inset-0 p-4 sm:p-10 flex flex-col justify-center items-center text-center">
               <AnimatePresence mode="wait">
                 {activeTab === "note" && (
                   <motion.div
@@ -319,83 +261,25 @@ export const ScratchCardSection: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="flex flex-col items-center justify-center h-full my-auto space-y-3 sm:space-y-4"
+                    className="flex flex-col items-center justify-center w-full space-y-2 sm:space-y-4"
                   >
-                    <span className="text-[10px] sm:text-xs tracking-[0.25em] text-[#C5A059] uppercase font-semibold">
+                    <span className="text-[9px] sm:text-xs tracking-[0.25em] text-[#C5A059] uppercase font-semibold">
                       From Our Hearts To Yours
                     </span>
 
-                    <h3 className="font-calligraphy text-2xl sm:text-4xl text-[#3A2E2B] leading-snug">
+                    <h3 className="font-calligraphy text-xl sm:text-4xl text-[#3A2E2B] leading-snug">
                       Dearest Family &amp; Friends
                     </h3>
 
-                    <p className="font-serif italic text-xs sm:text-base text-[#5C534E] max-w-lg leading-relaxed">
+                    <p className="font-serif italic text-[11px] sm:text-base text-[#5C534E] max-w-lg leading-relaxed px-2">
                       “Having you join our sacred covenant before God fills our hearts with immense gratitude. Your prayers, blessings, and warm presence illuminate our beginning as husband and wife.”
                     </p>
 
-                    <div className="w-12 h-[1px] bg-[#C5A059]/50 my-1" />
+                    <div className="w-12 h-[1px] bg-[#C5A059]/50" />
 
-                    <p className="font-calligraphy text-xl sm:text-3xl text-[#C5A059]">
+                    <p className="font-calligraphy text-lg sm:text-3xl text-[#C5A059]">
                       {weddingData.couple.groomShort} &amp; {weddingData.couple.brideShort}
                     </p>
-                  </motion.div>
-                )}
-
-                {activeTab === "vow" && (
-                  <motion.div
-                    key="tab-vow"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="flex flex-col items-center justify-center h-full my-auto space-y-3 sm:space-y-4"
-                  >
-                    <span className="text-[10px] sm:text-xs tracking-[0.25em] text-[#C5A059] uppercase font-semibold">
-                      Sacred Nuptial Covenant
-                    </span>
-
-                    <h3 className="font-serif text-xl sm:text-3xl text-[#3A2E2B] font-semibold">
-                      Two Hearts, United In Christ
-                    </h3>
-
-                    <p className="font-serif italic text-xs sm:text-base text-[#5C534E] max-w-lg leading-relaxed">
-                      “Two are better than one, because they have a good return for their labor... A cord of three strands is not quickly broken.”
-                    </p>
-
-                    <div className="w-12 h-[1px] bg-[#C5A059]/50 my-1" />
-
-                    <p className="font-serif text-xs sm:text-sm text-[#5C534E] tracking-wider">
-                      Ecclesiastes 4:9, 12 • St. Mary's Orthodox Church
-                    </p>
-                  </motion.div>
-                )}
-
-                {activeTab === "feast" && (
-                  <motion.div
-                    key="tab-feast"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="flex flex-col items-center justify-center h-full my-auto space-y-3 sm:space-y-4"
-                  >
-                    <span className="text-[10px] sm:text-xs tracking-[0.25em] text-[#C5A059] uppercase font-semibold">
-                      Feast &amp; Fellowship
-                    </span>
-
-                    <h3 className="font-serif text-xl sm:text-3xl text-[#3A2E2B] font-semibold">
-                      A Royal Kerala Celebration
-                    </h3>
-
-                    <p className="font-serif italic text-xs sm:text-sm text-[#5C534E] max-w-lg leading-relaxed">
-                      Following our solemn church ceremony, join us at Santhom Auditorium for an authentic Kerala Christian wedding feast, violin serenades, cake cutting, and joyous fellowship!
-                    </p>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 text-[10px] sm:text-xs text-[#3A2E2B] font-medium">
-                      <span className="bg-[#FAF7F2] border border-[#C5A059]/30 px-2 py-1 rounded-sm">✦ Traditional Feast</span>
-                      <span className="bg-[#FAF7F2] border border-[#C5A059]/30 px-2 py-1 rounded-sm">✦ Live Nuptial Music</span>
-                      <span className="bg-[#FAF7F2] border border-[#C5A059]/30 px-2 py-1 rounded-sm col-span-2 sm:col-span-1">✦ Photo Moments</span>
-                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>

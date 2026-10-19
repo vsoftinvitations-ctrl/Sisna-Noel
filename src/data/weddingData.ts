@@ -29,9 +29,11 @@ export interface WeddingData {
     brideParents: string;
     brideFather: string;
     brideMother: string;
+    brideSiblings: string[];
     groomParents: string;
     groomFather: string;
     groomMother: string;
+    groomSiblings: string[];
   };
   verse: {
     text: string;
@@ -60,63 +62,65 @@ export interface WeddingData {
 
 export const weddingData: WeddingData = {
   couple: {
-    bride: "Sisna",
-    groom: "Noel",
+    bride: "Sisna Maria",
+    groom: "Noel Binoy",
     brideShort: "Sisna",
     groomShort: "Noel",
     initials: "S & N",
   },
 
   wedding: {
-    date: "23 November 2026",
-    rawDate: "2026-11-23T10:00:00+05:30",
-    time: "10:00 AM",
-    venue: "St. Mary's Orthodox Church",
-    location: "Vandiperiyar, Idukki, Kerala",
-    city: "Vandiperiyar, Idukki",
+    date: "30 December 2026",
+    rawDate: "2026-12-30T11:00:00+05:30",
+    time: "11:00 AM",
+    venue: "Holy Family Syro Malabar Forane Church",
+    location: "Ponkunnam, Kottayam, Kerala",
+    city: "Ponkunnam, Kottayam",
     state: "Kerala",
-    mapsUrl: "https://maps.app.goo.gl/Z5Ve7VhVqyibf1VA7",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Holy+Family+Syro+Malabar+Forane+Church+Ponkunnam",
   },
 
   reception: {
-    date: "23 November 2026",
+    date: "30 December 2026",
     time: "12:30 PM",
-    venue: "Santhom Auditorium",
-    location: "Kumily Kattappana road, 1st mile, Kumily, Idukki, Kerala",
-    city: "Kumily, Idukki",
+    venue: "Holy Family Church Parish Hall",
+    location: "Ponkunnam, Kottayam, Kerala",
+    city: "Ponkunnam, Kottayam",
     state: "Kerala",
-    mapsUrl: "https://maps.app.goo.gl/LmTNooFVpUYqa6RXA",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Holy+Family+Syro+Malabar+Forane+Church+Ponkunnam",
   },
 
   family: {
-    brideParents: "Jacob Chacko & Marykutty Jacob",
-    brideFather: "Jacob Chacko",
-    brideMother: "Marykutty Jacob",
-    groomParents: "Stephen Xavior & Saly Stephen",
-    groomFather: "Stephen Xavior",
-    groomMother: "Saly Stephen",
+    brideParents: "Capt. Karottu Antony Andrews & Sweety Suvarna",
+    brideFather: "Capt. Karottu Antony Andrews",
+    brideMother: "Sweety Suvarna",
+    brideSiblings: ["Stiyan Antony", "Sansia Maria"],
+    groomParents: "Binoy Mathew & Elza Binoy",
+    groomFather: "Binoy Mathew",
+    groomMother: "Elza Binoy",
+    groomSiblings: ["Nevin Binoy"],
   },
 
   verse: {
-    text: "“The Lord God said, ‘It is not good for the man to live alone. I will make a suitable companion to help him.’”",
-    reference: "Genesis 2:18",
+    text: "“Above all, put on love, which binds everything together in perfect harmony.”",
+    reference: "Colossians 3:14",
   },
 
   message:
-    "With the blessings of our beloved parents and families, we joyfully invite you to celebrate the wedding of Sisna and Noel as they begin their new journey together. Your presence and blessings will make our special day even more meaningful.",
+    "With the blessings of our beloved parents and families, we joyfully invite you to celebrate the wedding of Sisna Maria Remitta and Noel Binoy as they begin their new journey together in holy matrimony. Your presence and blessings will make our special day even more meaningful.",
 
   timeline: [
     {
-      time: "10:00 AM",
-      title: "The Wedding Ceremony",
-      venue: "St. Mary's Orthodox Church",
-      description: "Sacred Christian nuptial ceremony and covenant blessing in Vandiperiyar.",
+      time: "11:00 AM",
+      title: "The Holy Matrimony Ceremony",
+      venue: "Holy Family Syro Malabar Forane Church, Ponkunnam",
+      description: "Sacred Syro-Malabar Christian nuptial ceremony and solemn marriage blessings.",
     },
     {
       time: "12:30 PM",
-      title: "Wedding Reception",
-      venue: "Santhom Auditorium",
-      description: "Festive celebration, traditional feast, and fellowship at Kumily Kattappana road, 1st mile.",
+      title: "Wedding Reception & Feast",
+      venue: "Holy Family Church Parish Hall, Ponkunnam",
+      description: "Festive celebration, traditional feast, and fellowship with family and friends.",
     },
   ],
 
@@ -137,45 +141,31 @@ export const weddingData: WeddingData = {
       title: "THE PROMISE",
       subtitle: "Forever in Love",
       content:
-        "As we step forward into holy matrimony on November 23, 2026, we vow to honor, cherish, and walk hand-in-hand for all the days of our lives.",
+        "As we step forward into holy matrimony on December 30, 2026, we vow to honor, cherish, and walk hand-in-hand for all the days of our lives.",
     },
   ],
 
   gallery: [
     {
       id: 1,
-      url: "/images/og-image.jpg",
+      url: "/images/gallary1.png",
       title: "Noel & Sisna",
-      caption: "Pre-wedding portrait in full romance",
+      caption: "Pre-wedding portrait",
       aspectRatio: "portrait",
     },
     {
       id: 2,
-      url: "/images/couple.png",
+      url: "/images/gallary2.png",
       title: "Sisna & Noel",
-      caption: "Pre-wedding portrait by the shore",
+      caption: "A moment together",
       aspectRatio: "portrait",
     },
     {
       id: 3,
-      url: "/images/bride.png",
-      title: "The Bride",
-      caption: "Sisna",
+      url: "/images/gallary3.png",
+      title: "Noel & Sisna",
+      caption: "Love in every frame",
       aspectRatio: "portrait",
-    },
-    {
-      id: 4,
-      url: "/images/church_art.png",
-      title: "St. Mary's Orthodox Church",
-      caption: "Sacred Ceremony Venue Illustration",
-      aspectRatio: "square",
-    },
-    {
-      id: 5,
-      url: "/images/reception_art.png",
-      title: "Santhom Auditorium",
-      caption: "Wedding Reception Venue Illustration",
-      aspectRatio: "square",
     },
   ],
 };

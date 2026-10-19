@@ -10,11 +10,11 @@ export const CalendarActions: React.FC = () => {
   const getGoogleCalendarUrl = () => {
     const title = encodeURIComponent(`Wedding of ${weddingData.couple.groom} & ${weddingData.couple.bride}`);
     const details = encodeURIComponent(
-      `Sacred Christian Nuptial Ceremony at ${weddingData.wedding.venue} (10:00 AM) followed by Wedding Reception at ${weddingData.reception.venue} (12:30 PM).`
+      `Sacred Christian Nuptial Ceremony at ${weddingData.wedding.venue} (${weddingData.wedding.time}) followed by Wedding Reception at ${weddingData.reception.venue} (${weddingData.reception.time}).`
     );
     const location = encodeURIComponent(`${weddingData.wedding.venue}, ${weddingData.wedding.location}`);
-    // 23 Nov 2026 10:00 AM IST is 04:30 AM UTC; End at 3:00 PM IST (09:30 UTC)
-    const dates = "20261123T043000Z/20261123T093000Z";
+    // 30 Dec 2026 11:00 AM IST is 05:30 AM UTC; End at 4:00 PM IST (10:30 UTC)
+    const dates = "20261230T053000Z/20261230T103000Z";
 
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
   };
@@ -32,8 +32,8 @@ export const CalendarActions: React.FC = () => {
       `SUMMARY:Wedding of ${coupleTitle}`,
       `DESCRIPTION:Wedding Ceremony at ${weddingData.wedding.venue} followed by Wedding Reception at ${weddingData.reception.venue}.`,
       `LOCATION:${weddingData.wedding.venue}, ${weddingData.wedding.location}`,
-      "DTSTART:20261123T043000Z",
-      "DTEND:20261123T093000Z",
+      "DTSTART:20261230T053000Z",
+      "DTEND:20261230T103000Z",
       "STATUS:CONFIRMED",
       "END:VEVENT",
       "END:VCALENDAR",

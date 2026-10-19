@@ -12,21 +12,21 @@ interface GalleryItem {
 
 const galleryItems: GalleryItem[] = [
   {
-    url: "/images/og-image.jpg",
+    url: "/images/gallary1.png",
     title: `${weddingData.couple.groom} & ${weddingData.couple.bride}`,
     subtitle: "Pre-wedding Romance",
-    position: "object-[center_60%]",
+    position: "object-center",
   },
   {
-    url: "/images/couple.png",
-    title: "Walking Hand-in-Hand",
+    url: "/images/gallary2.png",
+    title: "A Moment Together",
     subtitle: `${weddingData.couple.bride} & ${weddingData.couple.groom}`,
-    position: "object-[center_35%]",
+    position: "object-center",
   },
   {
-    url: "/images/bride.png",
-    title: "Joyful Moments",
-    subtitle: weddingData.couple.bride,
+    url: "/images/gallary3.png",
+    title: "Love in Every Frame",
+    subtitle: `${weddingData.couple.groom} & ${weddingData.couple.bride}`,
     position: "object-center",
   },
 ];
@@ -75,12 +75,7 @@ export const Gallery: React.FC = () => {
                   <ZoomIn className="w-5 h-5" />
                 </div>
               </div>
-              <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
-                <h3 className="font-serif text-lg font-medium tracking-wide">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-white/80">{item.subtitle}</p>
-              </div>
+
             </motion.div>
           ))}
         </div>

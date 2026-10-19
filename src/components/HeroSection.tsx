@@ -4,19 +4,14 @@ import { weddingData } from "../data/weddingData";
 
 const heroImages = [
   {
-    src: "/images/og-image.jpg",
-    alt: `${weddingData.couple.groom} & ${weddingData.couple.bride} - Romantic portrait`,
-    position: "object-[center_60%]",
-  },
-  {
-    src: encodeURI("/images/bride copy.png"),
-    alt: `${weddingData.couple.groom} & ${weddingData.couple.bride} - Beach celebration`,
+    src: encodeURI("/images/bride copy.png?v=3"),
+    alt: `${weddingData.couple.groom} & ${weddingData.couple.bride} - Wedding portrait`,
     position: "object-[center_45%]",
   },
   {
-    src: "/images/couple.png",
-    alt: `${weddingData.couple.groom} & ${weddingData.couple.bride} - Romantic moments`,
-    position: "object-[center_35%]",
+    src: "/images/wedding.png",
+    alt: `${weddingData.couple.groom} & ${weddingData.couple.bride} - Romantic portrait`,
+    position: "object-center",
   },
 ];
 
@@ -77,19 +72,17 @@ export const HeroSection: React.FC = () => {
                 Are Getting Married
               </p>
               
-              <h1 className="font-calligraphy text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-relaxed mb-1 tracking-wide">
+              <h1 className="font-italiana text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-relaxed mb-1 tracking-wide">
                 {weddingData.couple.groom}
               </h1>
               
-              <p className="font-calligraphy text-4xl sm:text-5xl text-[#C5A059] my-1 lg:ml-6">
+              <p className="font-italiana text-4xl sm:text-5xl text-[#C5A059] my-1 lg:ml-6">
                 &amp;
               </p>
               
-              <h1 className="font-calligraphy text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-relaxed mt-1 mb-6 tracking-wide">
+              <h1 className="font-italiana text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-relaxed mt-1 tracking-wide">
                 {weddingData.couple.bride}
               </h1>
-
-              <div className="w-16 h-[1px] bg-[#C5A059] mx-auto lg:mx-0 my-6" />
             </motion.div>
           </div>
         </div>

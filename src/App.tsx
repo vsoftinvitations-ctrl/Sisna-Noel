@@ -9,10 +9,8 @@ import { InvitationMessage } from "./components/InvitationMessage";
 import { FamilySection } from "./components/FamilySection";
 import { WeddingCeremony } from "./components/WeddingCeremony";
 import { ReceptionSection } from "./components/ReceptionSection";
-import { CalendarActions } from "./components/CalendarActions";
 import { WeddingTimeline } from "./components/WeddingTimeline";
 import { Countdown } from "./components/Countdown";
-import { GuestWishesSection } from "./components/GuestWishesSection";
 import { Gallery } from "./components/Gallery";
 import { Footer } from "./components/Footer";
 import { AmbientParticles } from "./components/AmbientParticles";
@@ -82,8 +80,6 @@ export const App: React.FC = () => {
             {/* Festive Reception Gathering Details */}
             <ReceptionSection />
 
-            {/* 1-Click Calendar Sync & Address Copy Utility */}
-            <CalendarActions />
 
             {/* Wedding Day Schedule Timeline */}
             <WeddingTimeline />
@@ -91,8 +87,7 @@ export const App: React.FC = () => {
             {/* Live Real-time Countdown Timer */}
             <Countdown />
 
-            {/* Interactive Digital Guestbook / Blessings Wall */}
-            <GuestWishesSection />
+
 
             {/* Luxury Photo Gallery with Lightbox */}
             <Gallery />

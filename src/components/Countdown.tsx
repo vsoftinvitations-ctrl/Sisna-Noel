@@ -49,9 +49,29 @@ export const Countdown: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
+
   return (
-    <section className="py-20 px-4 bg-[#F5EFEB] text-center">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-20 px-4 bg-[#F5EFEB] text-center relative overflow-hidden">
+
+      {/* Ambient chapter 1 photo — brightens when countdown ends */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src="/images/chapter 1.png"
+          alt=""
+          aria-hidden="true"
+          className={`w-full h-full object-cover object-[center_30%] transition-opacity duration-1000 ${
+            timeLeft.isToday ? 'opacity-[0.45]' : 'opacity-[0.28]'
+          }`}
+        />
+        <div className={`absolute inset-0 transition-opacity duration-1000 bg-gradient-to-b ${
+          timeLeft.isToday
+            ? 'from-[#F5EFEB]/20 via-transparent to-[#F5EFEB]/30'
+            : 'from-[#F5EFEB]/50 via-[#F5EFEB]/25 to-[#F5EFEB]/60'
+        }`} />
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        {!timeLeft.isToday && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,6 +87,7 @@ export const Countdown: React.FC = () => {
           </h2>
           <div className="w-16 h-[1px] bg-[#C5A059] mx-auto mt-4" />
         </motion.div>
+        )}
 
         {timeLeft.isToday ? (
           /* COMPLETION MESSAGE DISPLAYED WHEN COUNTDOWN ENDS */
@@ -74,22 +95,19 @@ export const Countdown: React.FC = () => {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="paper-card p-10 sm:p-14 rounded-2xl border border-[#C5A059]/40 shadow-xl max-w-xl mx-auto text-center relative overflow-hidden"
+            className="max-w-xl mx-auto text-center relative pb-12 pt-4 absolute bottom-0 left-0 right-0"
           >
-            <div className="absolute inset-3 border border-[#C5A059]/30 rounded-xl pointer-events-none" />
-            <div className="absolute inset-5 border border-[#C5A059]/15 rounded-lg pointer-events-none" />
-
-            <p className="text-xs sm:text-sm tracking-[0.25em] text-[#C5A059] font-medium uppercase mb-3">
+            <p className="font-italiana text-base sm:text-lg tracking-[0.3em] text-[#3A2E2B] uppercase mb-4" style={{textShadow:'0 0 20px rgba(255,255,255,1), 0 2px 8px rgba(255,255,255,0.9)'}}>
               Happily Ever After! 🤍
             </p>
 
-            <h3 className="font-calligraphy text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-tight mb-3">
+            <h3 className="font-italiana text-4xl sm:text-6xl text-[#3A2E2B] font-normal leading-tight mb-4" style={{textShadow:'0 2px 14px rgba(255,255,255,0.9)'}}>
               {weddingData.couple.groomShort} &amp; {weddingData.couple.brideShort} are Married
             </h3>
 
-            <div className="w-12 h-[1px] bg-[#C5A059]/50 mx-auto my-4" />
+            <div className="w-12 h-[1px] bg-[#C5A059]/60 mx-auto my-4" />
 
-            <p className="font-serif italic text-base sm:text-xl text-[#5C534E] tracking-wider font-light">
+            <p className="font-italiana text-xl sm:text-2xl text-[#5C534E] tracking-wider font-normal" style={{textShadow:'0 1px 10px rgba(255,255,255,0.95)'}}>
               And so, their beautiful forever begins…
             </p>
           </motion.div>

@@ -12,13 +12,28 @@ export const getIsMusicPlaying = () => {
 
 export const startGlobalMusic = () => {
   if (!globalAudio) {
-    globalAudio = new Audio("/music.mp3");
+    globalAudio = new Audio("/images/sisna.mp3");
     globalAudio.loop = true;
-    globalAudio.volume = 0.65;
+    globalAudio.volume = 0; // start silent, fade in
   }
+
   globalAudio
     .play()
-    .then(() => notifyListeners(true))
+    .then(() => {
+      notifyListeners(true);
+      // Smooth fade-in: 0 → 0.65 over ~3 seconds
+      const TARGET_VOLUME = 0.65;
+      const FADE_DURATION = 3000; // ms
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        if (!globalAudio || globalAudio.paused) return;
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / FADE_DURATION, 1);
+        globalAudio.volume = parseFloat((TARGET_VOLUME * progress).toFixed(3));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    })
     .catch((err) => console.warn("Audio play prevented:", err));
 };
 
