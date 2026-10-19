@@ -1,4 +1,4 @@
-// Shared Audio Singleton to guarantee single audio stream and synchronized UI
+// Shared Audio Singleton to guarantee single audio stream and synchronized UI across unboxing & main page
 let globalAudio: HTMLAudioElement | null = null;
 const stateListeners = new Set<(playing: boolean) => void>();
 
@@ -23,6 +23,22 @@ const fadeIn = (audio: HTMLAudioElement, target = 0.65, duration = 3000) => {
   requestAnimationFrame(tick);
 };
 
+const attemptPlay = (audio: HTMLAudioElement, retries = 3) => {
+  audio
+    .play()
+    .then(() => {
+      notifyListeners(true);
+      fadeIn(audio);
+    })
+    .catch((err) => {
+      console.warn("Audio play attempt failed:", err);
+      if (retries > 0) {
+        // Retry after short delay (helps on slow mobile networks)
+        setTimeout(() => attemptPlay(audio, retries - 1), 800);
+      }
+    });
+};
+
 export const startGlobalMusic = () => {
   if (!globalAudio) {
     globalAudio = new Audio("/images/sisna.mp3");
@@ -36,28 +52,9 @@ export const startGlobalMusic = () => {
   // If already playing, do nothing
   if (!audio.paused) return;
 
-  // IMPORTANT for Android Chrome: play() MUST be called synchronously
-  // within the user gesture (tap). Never defer to canplay — that loses
-  // the gesture context and Android will block it.
-  audio
-    .play()
-    .then(() => {
-      notifyListeners(true);
-      fadeIn(audio);
-    })
-    .catch(() => {
-      // On some Android devices the first attempt fails if the audio
-      // context was suspended. Retry once after a short delay.
-      setTimeout(() => {
-        audio
-          .play()
-          .then(() => {
-            notifyListeners(true);
-            fadeIn(audio);
-          })
-          .catch((e) => console.warn("Audio play failed:", e));
-      }, 300);
-    });
+  // CRITICAL for Android Chrome: call play() SYNCHRONOUSLY inside the user
+  // gesture — any async gap (like waiting for canplay) breaks autoplay policy.
+  attemptPlay(audio);
 };
 
 export const pauseGlobalMusic = () => {
