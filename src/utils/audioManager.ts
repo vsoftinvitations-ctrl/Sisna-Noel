@@ -10,31 +10,61 @@ export const getIsMusicPlaying = () => {
   return globalAudio ? !globalAudio.paused : false;
 };
 
+// Fade in from 0 → target volume over duration ms
+const fadeIn = (audio: HTMLAudioElement, target = 0.65, duration = 3000) => {
+  audio.volume = 0;
+  const startTime = performance.now();
+  const tick = (now: number) => {
+    if (!audio || audio.paused) return;
+    const progress = Math.min((now - startTime) / duration, 1);
+    audio.volume = parseFloat((target * progress).toFixed(3));
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+
+const attemptPlay = (audio: HTMLAudioElement, retries = 3) => {
+  audio
+    .play()
+    .then(() => {
+      notifyListeners(true);
+      fadeIn(audio);
+    })
+    .catch((err) => {
+      console.warn("Audio play attempt failed:", err);
+      if (retries > 0) {
+        // Retry after short delay (helps on slow mobile networks)
+        setTimeout(() => attemptPlay(audio, retries - 1), 800);
+      }
+    });
+};
+
 export const startGlobalMusic = () => {
   if (!globalAudio) {
     globalAudio = new Audio("/images/sisna.mp3");
     globalAudio.loop = true;
-    globalAudio.volume = 0; // start silent, fade in
+    globalAudio.preload = "auto"; // Start loading immediately
+    globalAudio.volume = 0;
   }
 
-  globalAudio
-    .play()
-    .then(() => {
-      notifyListeners(true);
-      // Smooth fade-in: 0 → 0.65 over ~3 seconds
-      const TARGET_VOLUME = 0.65;
-      const FADE_DURATION = 3000; // ms
-      const startTime = performance.now();
-      const tick = (now: number) => {
-        if (!globalAudio || globalAudio.paused) return;
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / FADE_DURATION, 1);
-        globalAudio.volume = parseFloat((TARGET_VOLUME * progress).toFixed(3));
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    })
-    .catch((err) => console.warn("Audio play prevented:", err));
+  const audio = globalAudio;
+
+  // If already playing, do nothing
+  if (!audio.paused) return;
+
+  // If audio is ready — play immediately
+  if (audio.readyState >= 2) {
+    attemptPlay(audio);
+  } else {
+    // Wait for enough data to play, then start
+    const onCanPlay = () => {
+      audio.removeEventListener("canplay", onCanPlay);
+      attemptPlay(audio);
+    };
+    audio.addEventListener("canplay", onCanPlay);
+    // Also try loading in case it hasn't started
+    audio.load();
+  }
 };
 
 export const pauseGlobalMusic = () => {
