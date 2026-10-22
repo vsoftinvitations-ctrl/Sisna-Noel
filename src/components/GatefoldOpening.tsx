@@ -121,7 +121,7 @@ export const GatefoldOpening: React.FC<GatefoldOpeningProps> = ({
         <p className="font-cinzel text-[10px] sm:text-[11px] tracking-[0.25em] text-[#3A2E2B] font-semibold uppercase" style={{textShadow:'0 1px 8px rgba(255,255,255,0.9)'}}>
           Request The Honour Of Your Presence
         </p>
-        <p className="font-cinzel text-[10px] sm:text-xs tracking-[0.2em] text-[#2C221E] font-bold uppercase mt-1 mb-5" style={{textShadow:'0 1px 8px rgba(255,255,255,0.9)'}}>
+        <p className="font-playfair text-xs sm:text-sm tracking-[0.2em] text-[#2C221E] font-bold uppercase mt-1 mb-5" style={{textShadow:'0 1px 8px rgba(255,255,255,0.9)'}}>
           30 December 2026 • Ponkunnam
         </p>
 

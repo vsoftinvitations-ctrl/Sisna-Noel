@@ -27,7 +27,7 @@ export const ReceptionSection: React.FC = () => {
               <div className="space-y-2.5 sm:space-y-4 mb-5 sm:mb-8 text-[#3A2E2B]">
                 <div className="flex items-center justify-center md:justify-start gap-2.5 sm:gap-3">
                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A059]" />
-                  <span className="font-serif text-base sm:text-lg font-medium">
+                  <span className="font-playfair text-base sm:text-lg font-semibold tracking-wide">
                     {weddingData.reception.date}
                   </span>
                 </div>

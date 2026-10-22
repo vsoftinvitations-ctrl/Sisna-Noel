@@ -72,7 +72,7 @@ export const InvitationCardReveal: React.FC = () => {
 
           {/* Event Details */}
           <div className="space-y-2">
-            <p className="font-serif text-xl sm:text-2xl font-bold tracking-widest text-[#3A2E2B]">
+            <p className="font-playfair text-xl sm:text-2xl font-bold tracking-widest text-[#3A2E2B]">
               {weddingData.wedding.date.toUpperCase()}
             </p>
             <p className="text-xs sm:text-sm tracking-wider text-[#C5A059] font-semibold uppercase">
@@ -168,7 +168,7 @@ export const InvitationCardReveal: React.FC = () => {
           {/* Event Details */}
           <div className="space-y-2">
             <p
-              className="font-serif text-3xl font-bold tracking-widest text-[#2C221E]"
+              className="font-playfair text-3xl font-bold tracking-widest text-[#2C221E]"
               style={{ textShadow: "0 1px 10px rgba(255, 255, 255, 0.9)" }}
             >
               {weddingData.wedding.date.toUpperCase()}

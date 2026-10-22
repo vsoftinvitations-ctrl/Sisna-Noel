@@ -52,16 +52,30 @@
     font-family: var(--font-italiana);
   }
 
+  .font-serif {
+    font-family: var(--font-serif);
+    font-variant-numeric: lining-nums proportional-nums;
+    -webkit-font-feature-settings: "lnum" 1;
+    font-feature-settings: "lnum" 1;
+  }
+
   .font-cinzel {
     font-family: var(--font-cinzel);
+    font-variant-numeric: lining-nums proportional-nums;
+    -webkit-font-feature-settings: "lnum" 1;
+    font-feature-settings: "lnum" 1;
   }
 
   .font-parisienne {
     font-family: var(--font-parisienne);
   }
 
-  .font-playfair {
+  .font-playfair,
+  .font-date {
     font-family: var(--font-playfair);
+    font-variant-numeric: lining-nums tabular-nums;
+    -webkit-font-feature-settings: "lnum" 1;
+    font-feature-settings: "lnum" 1;
   }
 
   .font-montserrat {

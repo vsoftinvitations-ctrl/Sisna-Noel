@@ -122,7 +122,7 @@ export const Countdown: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="paper-card p-6 rounded-sm border border-[#C5A059]/30 text-center"
             >
-              <span className="font-serif text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
+              <span className="font-playfair text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
                 {String(timeLeft.days).padStart(2, "0")}
               </span>
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase mt-2 block">
@@ -138,7 +138,7 @@ export const Countdown: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="paper-card p-6 rounded-sm border border-[#C5A059]/30 text-center"
             >
-              <span className="font-serif text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
+              <span className="font-playfair text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
                 {String(timeLeft.hours).padStart(2, "0")}
               </span>
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase mt-2 block">
@@ -154,7 +154,7 @@ export const Countdown: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="paper-card p-6 rounded-sm border border-[#C5A059]/30 text-center"
             >
-              <span className="font-serif text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
+              <span className="font-playfair text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
                 {String(timeLeft.minutes).padStart(2, "0")}
               </span>
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase mt-2 block">
@@ -170,7 +170,7 @@ export const Countdown: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="paper-card p-6 rounded-sm border border-[#C5A059]/30 text-center"
             >
-              <span className="font-serif text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
+              <span className="font-playfair text-4xl sm:text-5xl font-medium text-[#3A2E2B] block">
                 {String(timeLeft.seconds).padStart(2, "0")}
               </span>
               <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[#C5A059] uppercase mt-2 block">

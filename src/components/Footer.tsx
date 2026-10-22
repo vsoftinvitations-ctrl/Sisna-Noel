@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
           {weddingData.couple.bride} &amp; {weddingData.couple.groom}
         </h2>
 
-        <p className="font-serif text-sm tracking-widest text-[#3A2E2B] font-medium">
+        <p className="font-playfair text-sm tracking-widest text-[#3A2E2B] font-semibold">
           {weddingData.wedding.date.toUpperCase()}
         </p>
 
