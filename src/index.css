@@ -27,6 +27,18 @@
     -webkit-forced-color-adjust: none !important;
   }
 
+  /* Prevent iOS Safari elastic bounce and viewport shifting while preloader is active */
+  html.preloader-lock,
+  body.preloader-lock {
+    overflow: hidden !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    overscroll-behavior: none !important;
+    touch-action: none !important;
+    position: fixed !important;
+    width: 100% !important;
+  }
+
   * {
     forced-color-adjust: none !important;
     -webkit-forced-color-adjust: none !important;

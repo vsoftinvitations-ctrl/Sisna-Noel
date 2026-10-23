@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import confetti from "canvas-confetti";
 import { weddingData } from "../data/weddingData";
@@ -14,6 +14,55 @@ export const GatefoldOpening: React.FC<GatefoldOpeningProps> = ({
   const [isOpening, setIsOpening] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+
+  // Lock scroll completely on iOS Safari and other mobile browsers so preloader never moves/bounces on scroll
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalHtmlOverscroll = document.documentElement.style.overscrollBehavior;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalBodyPosition = document.body.style.position;
+    const originalBodyTouchAction = document.body.style.touchAction;
+    const originalBodyOverscroll = document.body.style.overscrollBehavior;
+
+    document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.overscrollBehavior = "none";
+    document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "none";
+    document.body.style.touchAction = "none";
+    document.documentElement.classList.add("preloader-lock");
+    document.body.classList.add("preloader-lock");
+
+    // Prevent touch drag / elastic rubber-band scrolling on iOS
+    const preventTouch = (e: TouchEvent) => {
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    };
+
+    const preventWheel = (e: WheelEvent) => {
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("touchmove", preventTouch, { passive: false });
+    window.addEventListener("wheel", preventWheel, { passive: false });
+
+    return () => {
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.documentElement.style.overscrollBehavior = originalHtmlOverscroll;
+      document.body.style.overflow = originalBodyOverflow;
+      document.body.style.position = originalBodyPosition;
+      document.body.style.touchAction = originalBodyTouchAction;
+      document.body.style.overscrollBehavior = originalBodyOverscroll;
+      document.documentElement.classList.remove("preloader-lock");
+      document.body.classList.remove("preloader-lock");
+      window.removeEventListener("touchmove", preventTouch);
+      window.removeEventListener("wheel", preventWheel);
+    };
+  }, []);
 
   const handleOpen = () => {
     if (isOpening) return;
@@ -59,35 +108,40 @@ export const GatefoldOpening: React.FC<GatefoldOpeningProps> = ({
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-between overflow-hidden select-none"
+      className="fixed inset-0 h-[100dvh] w-full z-50 flex flex-col items-center justify-between overflow-hidden select-none touch-none overscroll-none"
+      style={{
+        paddingTop: "max(1rem, env(safe-area-inset-top, 1rem))",
+        paddingBottom: "max(1.5rem, env(safe-area-inset-bottom, 1.5rem))",
+      }}
     >
       {/* Background Couple Photo Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
           src="/images/bride.png?v=3"
           alt={`${weddingData.couple.bride} & ${weddingData.couple.groom}`}
-          className="w-full h-full object-cover object-[center_35%] md:object-[center_30%] opacity-90 filter brightness-100"
+          className="w-full h-full object-cover object-[center_35%] md:object-[center_30%] opacity-90 filter brightness-100 select-none pointer-events-none"
+          draggable={false}
         />
         {/* Soft Warm Luxury Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/20 via-[#FAF7F2]/30 to-[#FAF7F2]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/20 via-[#FAF7F2]/30 to-[#FAF7F2]/70 pointer-events-none" />
       </div>
 
       {/* Ornate Corner Botanical Accents */}
-      <div className="absolute top-6 left-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-t border-l border-[#C5A059] p-2 z-10">
+      <div className="absolute top-4 sm:top-6 left-4 sm:left-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-t border-l border-[#C5A059] p-2 z-10">
         <div className="w-full h-full border-t border-l border-[#C5A059]/50" />
       </div>
-      <div className="absolute top-6 right-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-t border-r border-[#C5A059] p-2 z-10">
+      <div className="absolute top-4 sm:top-6 right-4 sm:right-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-t border-r border-[#C5A059] p-2 z-10">
         <div className="w-full h-full border-t border-r border-[#C5A059]/50" />
       </div>
-      <div className="absolute bottom-6 left-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-b border-l border-[#C5A059] p-2 z-10">
+      <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-b border-l border-[#C5A059] p-2 z-10">
         <div className="w-full h-full border-b border-l border-[#C5A059]/50" />
       </div>
-      <div className="absolute bottom-6 right-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-b border-r border-[#C5A059] p-2 z-10">
+      <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 w-16 sm:w-20 h-16 sm:h-20 opacity-40 pointer-events-none border-b border-r border-[#C5A059] p-2 z-10">
         <div className="w-full h-full border-b border-r border-[#C5A059]/50" />
       </div>
 
       {/* Top Header Cue (Subtle) */}
-      <div className="relative z-10 pt-10 text-center w-full px-4">
+      <div className="relative z-10 pt-2 sm:pt-4 text-center w-full px-4">
         <p className="text-[10px] sm:text-xs tracking-[0.35em] text-[#3A2E2B]/80 font-medium uppercase drop-shadow-sm">
           Wedding Invitation
         </p>
@@ -96,7 +150,7 @@ export const GatefoldOpening: React.FC<GatefoldOpeningProps> = ({
       {/* Downside: Couple Name & ONLY 1 BUTTON "Open Invitation" — no box, text on photo */}
       <div
         ref={buttonRef}
-        className="relative z-30 pb-10 sm:pb-14 text-center w-full px-4 flex flex-col items-center"
+        className="relative z-30 pb-2 sm:pb-6 text-center w-full px-4 flex flex-col items-center"
       >
         {/* Upper Writing */}
         <p className="font-cinzel text-[11px] sm:text-xs tracking-[0.3em] text-[#2C221E] font-bold uppercase mb-2" style={{textShadow:'0 1px 8px rgba(255,255,255,0.9)'}}>
@@ -129,7 +183,7 @@ export const GatefoldOpening: React.FC<GatefoldOpeningProps> = ({
         <button
           onClick={handleOpen}
           disabled={isOpening}
-          className="inline-flex items-center justify-center px-8 sm:px-10 py-2.5 sm:py-3 rounded-full bg-[#3A2E2B] border border-[#C5A059] text-[#FAF7F2] hover:bg-[#C5A059] hover:text-[#2C221E] font-medium text-xs sm:text-[13px] tracking-[0.2em] uppercase shadow-lg transition-all duration-200 active:scale-95 cursor-pointer"
+          className="inline-flex items-center justify-center px-8 sm:px-10 py-2.5 sm:py-3 rounded-full bg-[#3A2E2B] border border-[#C5A059] text-[#FAF7F2] hover:bg-[#C5A059] hover:text-[#2C221E] font-medium text-xs sm:text-[13px] tracking-[0.2em] uppercase shadow-lg transition-all duration-200 active:scale-95 cursor-pointer touch-auto"
         >
           <span>Open Invitation</span>
         </button>

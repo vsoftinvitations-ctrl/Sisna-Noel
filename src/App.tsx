@@ -21,6 +21,7 @@ export const App: React.FC = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
+    if (!isUnboxed) return;
     const handleScroll = () => {
       if (window.scrollY > 80) {
         setHasScrolled(true);
@@ -28,7 +29,7 @@ export const App: React.FC = () => {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isUnboxed]);
 
   const handleScrollDown = () => {
     const heroEl = document.getElementById("hero");
@@ -39,11 +40,22 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleUnboxComplete = () => {
+    setIsUnboxed(true);
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
   return (
-    <div className="relative min-h-screen bg-[#FAF7F2] text-[#3A2E2B] font-sans antialiased overflow-x-hidden">
+    <div
+      className={`relative bg-[#FAF7F2] text-[#3A2E2B] font-sans antialiased ${
+        !isUnboxed
+          ? "h-[100dvh] overflow-hidden select-none"
+          : "min-h-screen overflow-x-hidden"
+      }`}
+    >
       {/* 1. LUXURY TRIPTYCH GATEFOLD CARD EXPERIENCE (Clean, zero petals) */}
       {!isUnboxed && (
-        <GatefoldOpening onOpenComplete={() => setIsUnboxed(true)} />
+        <GatefoldOpening onOpenComplete={handleUnboxComplete} />
       )}
 
       {/* 2. MAIN WEDDING WEBSITE CONTENT */}
